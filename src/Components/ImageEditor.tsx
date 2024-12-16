@@ -98,6 +98,7 @@ const ImageEditor: React.FC = () => {
   console.log(thumbnails,"thumbnails");
   
   const [imageCount, setImageCount] = useState(0);
+  console.log(imageCount)
   const navigate = useNavigate(); // Update to useNavigate
 
   const handleImageUpload = (files: FileList) => {
@@ -170,7 +171,7 @@ console.log(image,"image");
   // const handleCartClick = () => {
   //   navigate('/cart', { state: { image } }); 
   // };
-  const imageSrc = image; // or whatever property you need
+  // const imageSrc = image; // or whatever property you need
   console.log(image,"image");
 //   const handleCartClick = () => {
 //     // Assuming `image` is the HTMLImageElement, extract its src or other properties
