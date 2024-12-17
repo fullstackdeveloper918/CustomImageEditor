@@ -36,3 +36,107 @@
     transform: rotate(360deg);
   }
 }
+
+.headingText {
+  font-size: 24px;
+  margin: 0 0 10px;
+  text-align: left;
+}
+
+button.sizeButton {
+  padding: 10px 20px;
+  background: transparent;
+  color: #ff4d4f;
+  font-size: 16px;
+  border: 1px solid #ff4d4f;
+  border-radius: 5px;
+  width: 100%;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+button.sizeButton:hover {
+  background-color: #ff4d4f;
+  color: #fff;
+}
+
+h3 {
+  font-size: 15px;
+  margin: 0;
+  color: grey;
+}
+
+p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.placeholderDuv {
+  text-align: center;
+  border: 1px dashed #aaa;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  border-radius: 15px;
+}
+
+.cartBtn {
+  background-color: #ff4d4f;
+  color: #fff;
+  border: 1px solid #ff4d4f;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.leftWrapper {
+  max-width: 66%;
+  width: 100%;
+  box-shadow: 0 0 10px rgb(236 236 236 / 50%);
+}
+.rightWrapper {
+  width: 100%;
+  max-width: 30%;
+}
+.canvaWidth {
+  width: 100%;
+}
+.konvajs-content ,
+canvas {
+  width: 100% !important;
+}
+.flexWrapper {
+  justify-content: space-between;
+
+}
+@media screen and (max-width: 1366px) {
+  .rightWrapper {
+    max-width: 35%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .flexWrapper {
+    padding: 30px !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .flexWrapper {
+    flex-direction: column-reverse;
+  }
+  .rightWrapper {
+    max-width: 100%;
+  }
+  .leftWrapper {
+    max-width: 96%;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 575px) {
+  .konvajs-content, canvas{
+    width: 100% !important;
+    height: 400px !important;
+  }
+}

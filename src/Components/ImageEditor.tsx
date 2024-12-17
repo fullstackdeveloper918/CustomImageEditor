@@ -203,11 +203,11 @@ const handleCartClick = () => {
   return (
     <>
    
-    <div style={{ display: 'flex', gap: '20px', padding: '80px' }}>
+    <div style={{ display: 'flex', gap: '20px', padding: '80px' }} className="flexWrapper">
   {/* Left Section (Image Editor Canvas) */}
-  <div style={{ flex: 2, border: '1px solid #e0e0e0', position: 'relative', padding: '10px' }}>
-  <Stage
-        width={1230}
+  <div style={{border: '1px solid #f1f1f1', position: 'relative', padding: '10px',borderRadius:"15px" }} className="leftWrapper" >
+  <Stage className="canvaWidth"
+        width={1200}
         height={600}
         onMouseDown={(e) => {
           if (e.target === e.target.getStage()) {
@@ -237,13 +237,13 @@ const handleCartClick = () => {
   </div>
 
   {/* Right Section (Options and Thumbnails) */}
-  <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '15px' }}>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }} className="rightWrapper">
     {/* Mouse Pad Size Selector */}
     <div>
-      <h3>Mouse Pad Size</h3>
+      <h2 className="headingText">Mouse Pad Size</h2>
       <div style={{ display: 'flex', gap: '10px' }}>
-        <button>700x300</button>
-        <button>900x400</button>
+        <button className="sizeButton">700x300</button>
+        <button className="sizeButton">900x400</button>
       </div>
     </div>
 
@@ -257,15 +257,17 @@ const handleCartClick = () => {
     style={{ display: 'none' }} // Hide the input
   />
   <div 
-    style={{ textAlign: 'center', border: '1px dashed #aaa', padding: '20px' }}    
+    className="placeholderDuv"
     onDrop={handleFileDrop}
     onDragOver={handleDragOver}
   >
+    <div>
     <h3>Your Design Here</h3>
     <p style={{ color: '#888' }}>Drag and Drop</p>
     <p style={{ color: '#bbb', fontSize: 'small' }}>
       PNG, JPG, PDF, JPEG, AI, EPS, HEIC
     </p>
+    </div>
     
     {/* Thumbnail Section */}
   </div>
@@ -278,7 +280,7 @@ const handleCartClick = () => {
               key={thumb.id}
               src={thumb.src}
               alt={thumb.id}
-              style={{ width: 60, height: 60, borderRadius: '5px', cursor: 'pointer' }}
+              style={{ width:120, height: 120, borderRadius: '5px', cursor: 'pointer' }}
               onClick={() => handleThumbnailSelect(thumb.id)}
             />
       
@@ -312,13 +314,13 @@ const handleCartClick = () => {
 
     {/* Rotate/Undo Section */}
     <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '15px' }}>
-      <button>⟲ Rotate</button>
-      <button>↺ Undo</button>
+      <button className="sizeButton">⟲ Rotate</button>
+      <button className="sizeButton">↺ Undo</button>
     </div>
 
     {/* Add to Cart Button */}
-    <div style={{ textAlign: 'center', marginTop: '20px' }}>
-      <button onClick={handleCartClick} style={{ padding: '10px 20px', background: '#ff4d4f', color: 'white', fontSize: '16px', border: 'none' }}>
+    <div style={{ textAlign: 'center', }}>
+      <button onClick={handleCartClick} className="cartBtn">
         Add to Cart
       </button>
     </div>
