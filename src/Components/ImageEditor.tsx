@@ -116,7 +116,7 @@ const ImageEditor: React.FC = () => {
                 // Set the first image in the editor if thumbnails are available
                 if (newThumbnails.length === 1) {
                   const newImage: ImageProps = {
-                    x: (800 - 200) / 2,
+                    x: (800 - 650) / 2,
                     y: (600 - 200) / 2,
                     width: 200,
                     height: 200,
@@ -154,7 +154,7 @@ const ImageEditor: React.FC = () => {
       img.src = selectedThumbnail.src;
       img.onload = () => {
         const newImage: ImageProps = {
-          x: (800 - 200) / 2,
+          x: (800 - 650) / 2,
           y: (600 - 200) / 2,
           width: 200,
           height: 200,
@@ -200,15 +200,45 @@ const handleCartClick = () => {
       },
   });
 };
+
+
+const stageRef = useRef<any>(null);
+const [canvasWidth, setCanvasWidth] = useState(1200);
+const [canvasHeight, setCanvasHeight] = useState(600);
+// Update canvas size on window resize
+const width = window.innerWidth < 600 ? window.innerWidth + 800 : (window.innerWidth < 991 ? window.innerWidth + 270 : 1024);
+const width1 = window.innerWidth + 270 
+let height = window.innerHeight;
+useEffect(() => {
+  const handleResize = () => {
+    const remBase = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const newWidth = window.innerWidth * 0.030 * remBase;
+    const newHeight = window.innerHeight * 0.9; // 60% of the window height
+    setCanvasWidth(newWidth);
+    setCanvasHeight(newHeight);
+  };
+
+  window.addEventListener("resize", handleResize);
+  handleResize(); // initial resize
+
+  return () => {
+    window.removeEventListener("resize", handleResize);
+  };
+}, []);
   return (
     <>
-   
-    <div style={{ display: 'flex', gap: '20px', padding: '80px' }} className="flexWrapper">
+   {/* style={{ display: 'flex', gap: '20px', padding: '80px' }} */}
+    <div  className="main-container">
   {/* Left Section (Image Editor Canvas) */}
-  <div style={{border: '1px solid #f1f1f1', position: 'relative', padding: '10px',borderRadius:"15px" }} className="leftWrapper" >
-  <Stage className="canvaWidth"
-        width={1200}
-        height={600}
+  {/* style={{ flex: 2, border: '1px solid #e0e0e0', position: 'relative', padding: '10px' }} */}
+  <div  className="mainer_dragdiv" 
+  // style={{width:width1}}
+  >
+  <Stage
+         width={width}
+        //  ref={stageRef}
+        height={450}
+        className="drowbox_tab"
         onMouseDown={(e) => {
           if (e.target === e.target.getStage()) {
             // Prevent deselecting image
@@ -237,13 +267,14 @@ const handleCartClick = () => {
   </div>
 
   {/* Right Section (Options and Thumbnails) */}
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }} className="rightWrapper">
+  {/* style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '15px' }} */}
+  <div >
     {/* Mouse Pad Size Selector */}
     <div>
-      <h2 className="headingText">Mouse Pad Size</h2>
+      <h3>Mouse Pad Size</h3>
       <div style={{ display: 'flex', gap: '10px' }}>
-        <button className="sizeButton">700x300</button>
-        <button className="sizeButton">900x400</button>
+        <button>700x300</button>
+        <button>900x400</button>
       </div>
     </div>
 
@@ -257,17 +288,15 @@ const handleCartClick = () => {
     style={{ display: 'none' }} // Hide the input
   />
   <div 
-    className="placeholderDuv"
+    style={{ textAlign: 'center', border: '1px dashed #aaa', padding: '20px' }}    
     onDrop={handleFileDrop}
     onDragOver={handleDragOver}
   >
-    <div>
     <h3>Your Design Here</h3>
     <p style={{ color: '#888' }}>Drag and Drop</p>
     <p style={{ color: '#bbb', fontSize: 'small' }}>
       PNG, JPG, PDF, JPEG, AI, EPS, HEIC
     </p>
-    </div>
     
     {/* Thumbnail Section */}
   </div>
@@ -280,7 +309,7 @@ const handleCartClick = () => {
               key={thumb.id}
               src={thumb.src}
               alt={thumb.id}
-              style={{ width:120, height: 120, borderRadius: '5px', cursor: 'pointer' }}
+              style={{ width: 60, height: 60, borderRadius: '5px', cursor: 'pointer' }}
               onClick={() => handleThumbnailSelect(thumb.id)}
             />
       
@@ -314,13 +343,13 @@ const handleCartClick = () => {
 
     {/* Rotate/Undo Section */}
     <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '15px' }}>
-      <button className="sizeButton">⟲ Rotate</button>
-      <button className="sizeButton">↺ Undo</button>
+      <button>⟲ Rotate</button>
+      <button>↺ Undo</button>
     </div>
 
     {/* Add to Cart Button */}
-    <div style={{ textAlign: 'center', }}>
-      <button onClick={handleCartClick} className="cartBtn">
+    <div style={{ textAlign: 'center', marginTop: '20px' }}>
+      <button onClick={handleCartClick} style={{ padding: '10px 20px', background: '#ff4d4f', color: 'white', fontSize: '16px', border: 'none' }}>
         Add to Cart
       </button>
     </div>

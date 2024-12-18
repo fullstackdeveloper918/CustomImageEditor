@@ -28,6 +28,49 @@
   color: #61dafb;
 }
 
+/* 18-12-24 */
+.main-container {
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  max-width: 1440px;
+  margin: 80px auto;
+  gap: 50px;
+  padding: 0px 20px;
+}
+
+.mainer_dragdiv {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+
+.mainer_dragdiv {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+@media (max-width:1440px){
+  /* .mainer_dragdiv .drowbox_tab canvas {
+    width: 100% !important;
+    max-width: 70rem;
+  } */
+  
+  .drowbox_tab, .drowbox_tab>div {
+    width: 100% !important;
+    max-width: 50rem;
+  }
+  
+}
+
+@media (max-width:991px){
+  .main-container {
+    grid-template-columns: 1fr;
+    max-width: 1440px;
+    gap: 40px;
+    overflow-x: hidden;
+}
+}
+/* end 18-12-24 */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -105,9 +148,9 @@ p {
   width: 100%;
 }
 .konvajs-content ,
-canvas {
+/* canvas {
   width: 100% !important;
-}
+} */
 .flexWrapper {
   justify-content: space-between;
 
@@ -136,7 +179,7 @@ canvas {
 }
 @media screen and (max-width: 575px) {
   .konvajs-content, canvas{
-    width: 100% !important;
-    height: 400px !important;
+    /* width: 100% !important; */
+    /* height: 400px !important; */
   }
 }
