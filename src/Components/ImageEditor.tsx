@@ -268,13 +268,13 @@ useEffect(() => {
 
   {/* Right Section (Options and Thumbnails) */}
   {/* style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '15px' }} */}
-  <div >
+  <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '15px' }} >
     {/* Mouse Pad Size Selector */}
-    <div>
-      <h3>Mouse Pad Size</h3>
+   <div>
+      <h2 className="headingText">Mouse Pad Size</h2>
       <div style={{ display: 'flex', gap: '10px' }}>
-        <button>700x300</button>
-        <button>900x400</button>
+        <button className="sizeButton">700x300</button>
+        <button className="sizeButton">900x400</button>
       </div>
     </div>
 
@@ -288,6 +288,7 @@ useEffect(() => {
     style={{ display: 'none' }} // Hide the input
   />
   <div 
+  
     style={{ textAlign: 'center', border: '1px dashed #aaa', padding: '20px' }}    
     onDrop={handleFileDrop}
     onDragOver={handleDragOver}
@@ -342,14 +343,14 @@ useEffect(() => {
     </div> */}
 
     {/* Rotate/Undo Section */}
-    <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '15px' }}>
+    {/* <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '15px' }}>
       <button>⟲ Rotate</button>
       <button>↺ Undo</button>
-    </div>
+    </div> */}
 
     {/* Add to Cart Button */}
-    <div style={{ textAlign: 'center', marginTop: '20px' }}>
-      <button onClick={handleCartClick} style={{ padding: '10px 20px', background: '#ff4d4f', color: 'white', fontSize: '16px', border: 'none' }}>
+    <div style={{ textAlign: 'center', }}>
+      <button onClick={handleCartClick} className="cartBtn">
         Add to Cart
       </button>
     </div>
